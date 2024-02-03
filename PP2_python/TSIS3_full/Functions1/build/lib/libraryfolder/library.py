@@ -1,5 +1,5 @@
-def convert_ounces(g):
-    return g * 28.3495231
+def convert_ounces(grams):
+    return grams * 28.3495231
 
 def convert_celsius(F):
     return 5 / 9 * (F - 32)
@@ -57,16 +57,17 @@ def ch_pal(s):
 
 def histogram(a):
     for x in a:
-        print('*' * x, end = ' ')
+        print('*' * x)
 
 def Game():
     import random
     x = random.randint(1, 20)
     name = input("Hello!\nWhat is you name?\n")
-    print(f'Well, {name}, I am thinking of a number between 1 and 20.')
+    print(f'\nWell, {name}, I am thinking of a number between 1 and 20.')
     cnt = 0
     while True:
         y = int(input("Take a guess.\n"))
+        print()
         cnt += 1
         if y < x:
             print("Your guess is too low.")
