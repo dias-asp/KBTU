@@ -12,5 +12,7 @@ P1 = Point()
 P1.move(0, 0)
 P2 = Point()
 P2.move(1, 1)
+P1.show()
+P2.show()
 
 print(P1.dist(P2))

@@ -1,4 +1,4 @@
-class Bank_account:
+class Account:
     def __init__(self, s):
         self.owner = s
         self.balance = 0
@@ -12,7 +12,7 @@ class Bank_account:
         else:
             print("You don't have that much money!")
 
-x = Bank_account("Vika")
+x = Account("Vika")
 x.deposit(100)
 x.deposit(50)
 x.get_balance()

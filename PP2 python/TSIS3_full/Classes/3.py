@@ -3,11 +3,11 @@ class Shape:
     def printArea(self):
         print(self.area)
 class Rectangle(Shape):
-    def __init__(self, a, b):
-        self.side1 = a
-        self.side2 = b
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
     def calcArea(self):
-        self.area = self.side1 * self.side2
+        self.area = self.length * self.width
 
 x = Rectangle(5, 10)
 x.calcArea()
