@@ -30,6 +30,18 @@ def calc_avg_score_category(movies, category):
     movies = filter_category(movies, category)
     return calc_avg_score(movies)
 
+def find(movies):
+    S = set()
+    for movie in movies:
+        S.add(movie["category"])
+    ans = []
+    for i in S:
+        if len(filter_category(movies, i)) == 1:
+            ans.append(i)
+    return ans
+
+
+
 print(check1(movies[0]))
 print (*filter_good(movies), sep = '\n')
 print()
@@ -37,3 +49,4 @@ print (*filter_category(movies, "Romance"), sep = '\n')
 print(calc_avg_score(movies))
 print(calc_avg_score_category(movies, "Comedy"))
 
+print(find(movies))

@@ -22,6 +22,7 @@ print(library.has_33([1, 3, 3]))
 print(library.has_33([1, 3, 1, 3]))
 print(library.has_33([3, 1, 3]))
 
+print(library.spy_game(list(map(int, input().split()))))
 print(library.spy_game([1,2,4,0,0,7,5]))
 print(library.spy_game([1,0,2,4,0,5,7]))
 print(library.spy_game([1,7,2,0,4,5,0]))
