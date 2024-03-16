@@ -1,6 +1,6 @@
 import json
 
-f = open("C:\codes\python\Test\json\js.json")
+f = open(r"C:\codes\python\Test\json\js.json")
 x = json.load(f)
 
 print("Interface Status\n")

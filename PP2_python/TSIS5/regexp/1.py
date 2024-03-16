@@ -1,5 +1,5 @@
 import re
 
 s = "abbbbb"
-x = re.fullmatch("ab*", s)
+x = re.match("ab*", s)
 print(x)
