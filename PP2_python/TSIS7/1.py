@@ -41,8 +41,8 @@ while not done:
     minute = time.minute
     hour = time.hour
     second = time.second
-    angle1 = (minute*6)
-    angle2 = (hour % 12) * 30 + (minute/2)
+    angle1 = second * 6 #second angle
+    angle2 = (minute * 6) + (second / 10) #minute angle
 
     new_hour, rect1 = rotate(hour_arrow, angle2, pivot_hour, offset_hour)
     new_minute, rect2 = rotate(minute_arrow, angle1, pivot_minute, offset_minute)
