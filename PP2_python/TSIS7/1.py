@@ -6,16 +6,18 @@ screen = pygame.display.set_mode((1000, 800))
 done = False
 clock = pygame.time.Clock()
 clock_image = pygame.image.load(r"clock.png")
-minute_arrow = pygame.image.load(r"arrow2.png")
-hour_arrow = pygame.image.load(r"arrow1(2).png")
-pos_clock = (100, 100)
-pos_minute = (335, 90)
-pivot_minute = (350, 350)
-offset_minute = pygame.math.Vector2(-1, -120)
+second_arrow = pygame.image.load(r"arrow2.png")
+minute_arrow = pygame.image.load(r"arrow1(2).png")
 
-pos_hour = (334, 135)
-pivot_hour = (350, 350)
-offset_hour = pygame.math.Vector2(0, -100)
+pos_clock = (100, 100)
+
+pos_second = (335, 90)
+pivot_second = (350, 350)
+offset_second = pygame.math.Vector2(-1, -120)
+
+pos_minute = (334, 135)
+pivot_minute = (350, 350)
+offset_minute = pygame.math.Vector2(0, -100)
 
 def rotate(surface, angle, pivot, offset):
     """Rotate the surface around the pivot point.
@@ -39,18 +41,17 @@ while not done:
             
     time = datetime.datetime.today()
     minute = time.minute
-    hour = time.hour
     second = time.second
     angle1 = second * 6 #second angle
     angle2 = (minute * 6) + (second / 10) #minute angle
 
-    new_hour, rect1 = rotate(hour_arrow, angle2, pivot_hour, offset_hour)
-    new_minute, rect2 = rotate(minute_arrow, angle1, pivot_minute, offset_minute)
+    new_minute, rect1 = rotate(minute_arrow, angle2, pivot_minute, offset_minute)
+    new_second, rect2 = rotate(second_arrow, angle1, pivot_second, offset_second)
 
     screen.fill((0, 0, 0))
     screen.blit(clock_image, pos_clock)
-    screen.blit(new_hour, rect1)
-    screen.blit(new_minute, rect2)
+    screen.blit(new_minute, rect1)
+    screen.blit(new_second, rect2)
 
     pygame.display.flip()
     clock.tick(60)

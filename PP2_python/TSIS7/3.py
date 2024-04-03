@@ -4,9 +4,9 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 done = False
 clock = pygame.time.Clock()
+
 x = 30
 y = 30
-
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
