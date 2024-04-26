@@ -166,10 +166,10 @@ while not done:
     if mode == "Paint":
         pos = pygame.mouse.get_pos()
         points.insert(0, (colors[color], pos, radius))
-        if len(points) > 1024: points.pop(256)
+        if len(points) > 1024: points.pop(-1)
     else:
         points.insert(0, (colors[color], (-100, -100), radius))
-        if len(points) > 1024: points.pop(256)
+        if len(points) > 1024: points.pop(-1)
 
     
 

@@ -14,7 +14,7 @@ White = (255, 255, 255)
 Black = (0, 0, 0)
 
 font = pygame.font.Font(None, 28)
-
+    
 class Snake():
     def __init__(self):
         self.size = 1
