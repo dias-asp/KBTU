@@ -5,14 +5,14 @@ using namespace std;
 int timer = 0;
 
 struct Node{
-    string val;
+    int val;
     int id;
     Node* next;
     Node* prev;
-    Node(): val(""), id(++timer), next(nullptr), prev(nullptr) {}
-    Node(string x): val(x), id(++timer), next(nullptr), prev(nullptr) {}
+    Node(): val(0), id(++timer), next(nullptr), prev(nullptr) {}
+    Node(int x): val(x), id(++timer), next(nullptr), prev(nullptr) {}
     Node(Node* next, Node* prev): val(0), id(++timer), next(next), prev(prev) {}
-    Node(string x, Node* next, Node* prev): val(x), id(++timer), next(next), prev(prev) {}
+    Node(int x, Node* next, Node* prev): val(x), id(++timer), next(next), prev(prev) {}
 };
 
 Node* insert(Node* head, Node* node, int p){
@@ -74,7 +74,7 @@ void print(Node* head){
     auto cur = head -> next;
     while (cur -> next != nullptr)
     {
-        cout << cur -> val << endl;
+        cout << cur -> val << " ";
         cur = cur -> next;
     }
     cout << endl;
@@ -118,4 +118,22 @@ int main(){
         cin >> x;
         head = insert(head, new Node(x), i - 1);
     }
+
+    int ans = -100000;
+    for (int l = 1; l <= n; l++)
+    {
+        for (int r = l; r <= n; r++)
+        {
+            int sum = 0;
+            auto cur = get(head, l - 1);
+            auto end = get(head, r);
+            while (cur != end)
+            {
+                sum += cur -> val;
+                cur = cur -> next;
+            }
+            if (sum > ans) ans = sum;
+        }
+    }
+    cout << ans;
 }

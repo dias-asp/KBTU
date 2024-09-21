@@ -6,13 +6,12 @@ int timer = 0;
 
 struct Node{
     string val;
-    int id;
     Node* next;
     Node* prev;
-    Node(): val(""), id(++timer), next(nullptr), prev(nullptr) {}
-    Node(string x): val(x), id(++timer), next(nullptr), prev(nullptr) {}
-    Node(Node* next, Node* prev): val(0), id(++timer), next(next), prev(prev) {}
-    Node(string x, Node* next, Node* prev): val(x), id(++timer), next(next), prev(prev) {}
+    Node(): val(""), next(nullptr), prev(nullptr) {}
+    Node(string x): val(x), next(nullptr), prev(nullptr) {}
+    Node(Node* next, Node* prev): val(""), next(next), prev(prev) {}
+    Node(string x, Node* next, Node* prev): val(x), next(next), prev(prev) {}
 };
 
 Node* insert(Node* head, Node* node, int p){
@@ -74,7 +73,7 @@ void print(Node* head){
     auto cur = head -> next;
     while (cur -> next != nullptr)
     {
-        cout << cur -> val << endl;
+        cout << cur -> val << " ";
         cur = cur -> next;
     }
     cout << endl;
@@ -110,12 +109,63 @@ int main(){
     tail -> prev = head;
     head -> next = tail;
 
-    int n;
-    cin >> n;
-    for (int i = 1; i <= n; i++)
+    int n = 0;
+    while (true)
     {
-        int x;
-        cin >> x;
-        head = insert(head, new Node(x), i - 1);
+        string type, s;
+        cin >> type;
+        if (type == "exit")
+        {
+            cout << "goodbye";
+            break;
+        }
+        if (type == "add_front")
+        {
+            cin >> s;
+            head = insert(head, new Node(s), 0);
+            n++;
+            cout << "ok\n";
+        }
+        if (type == "add_back")
+        {
+            cin >> s;
+            head = insert(head, new Node(s), n);
+            n++;
+            cout << "ok\n";
+        }
+        if (type == "erase_front")
+        {
+            if (n == 0) {cout << "error\n"; continue;}
+            cout << get(head, 0) -> val << endl;
+            remove(head, 0);
+            n--;
+        }
+        if (type == "erase_back")
+        {
+            if (head -> next == tail) {cout << "error\n"; continue;}
+            cout << get(head, n - 1) -> val << endl;
+            remove(head, n - 1);
+            n--;
+        }
+        if (type == "front")
+        {
+            if (head -> next == tail) {cout << "error\n"; continue;}
+            cout << get(head, 0) -> val << endl;
+        }
+        if (type == "back")
+        {
+            if (head -> next == tail) {cout << "error\n"; continue;}
+            cout << get(head, n - 1) -> val << endl;
+        }
+        if (type == "clear")
+        {
+            head = new Node();
+            tail = new Node();
+            tail -> prev = head;
+            head -> next = tail;
+            n = 0;
+            cout << "ok\n";
+        }
     }
+
 }
