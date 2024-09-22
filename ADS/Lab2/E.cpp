@@ -1,18 +1,14 @@
 #include <iostream>
 
 using namespace std;
-
-int timer = 0;
-
 struct Node{
     string val;
-    int id;
     Node* next;
     Node* prev;
-    Node(): val(""), id(++timer), next(nullptr), prev(nullptr) {}
-    Node(string x): val(x), id(++timer), next(nullptr), prev(nullptr) {}
-    Node(Node* next, Node* prev): val(0), id(++timer), next(next), prev(prev) {}
-    Node(string x, Node* next, Node* prev): val(x), id(++timer), next(next), prev(prev) {}
+    Node(): val(""), next(nullptr), prev(nullptr) {}
+    Node(string x): val(x), next(nullptr), prev(nullptr) {}
+    Node(Node* next, Node* prev): val(0), next(next), prev(prev) {}
+    Node(string x, Node* next, Node* prev): val(x), next(next), prev(prev) {}
 };
 
 Node* insert(Node* head, Node* node, int p){
@@ -112,10 +108,19 @@ int main(){
 
     int n;
     cin >> n;
+    int cnt = 0;
     for (int i = 1; i <= n; i++)
     {
-        int x;
-        cin >> x;
-        head = insert(head, new Node(x), i - 1);
+        string s;
+        cin >> s;
+        if (get(head, 0) -> val == s) continue;
+        else
+        {
+            head = insert(head, new Node(s), 0);
+            cnt++;
+        }
     }
+    cout << "All in all: " << cnt << endl;
+    cout << "Students:\n";
+    print(head);
 }
