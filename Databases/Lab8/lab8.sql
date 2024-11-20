@@ -75,4 +75,4 @@ create view salesman_more_1_customer as
     having count(*) > 1;
 
 create role intern;
-grant all privileges on customers, orders, salesman to junior_dev;
+grant junior_dev to intern;
