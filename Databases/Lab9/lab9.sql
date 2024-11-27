@@ -118,7 +118,7 @@ declare
     s integer := 0;
     n varchar := '';
 begin
-    ---select salary, name into s, n from employees
-    ---where id = 1;
+    select salary, name into s, n from employees
+    where id = 1;
     raise notice 'salary is ', s, n;
 end test$$;
