@@ -94,7 +94,7 @@ select * from employees;
 
 drop function complex_calculation(a integer, b integer, c integer, x integer, y integer);
 drop function complex_calculation(integer, integer, integer, out integer, integer);
-create or replace function complex_calculation(a integer, b integer, c integer, out x integer, out y integer) as
+create or replace function complex_calculation(a integer, b integer, c text, out x integer, out y text) as
 $$
 begin
     <<add>>
@@ -104,12 +104,12 @@ begin
 
     <<alter_text>>
     begin
-        y := c * c;
+        y := c || c;
     end alter_text;
 end;$$
 language plpgsql;
 
-select complex_calculation(1, 2, 3);
+select complex_calculation(1, 2, 'asd');
 
 
 do $$
